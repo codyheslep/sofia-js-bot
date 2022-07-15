@@ -40,15 +40,17 @@ export class MainDialog extends ComponentDialog {
     
     private parseRawHTML(message) {
         var lineBreakTag = new RegExp("/<br/>/i");
+        var lineBreakSpaceTag = new RegExp("/<br />/i");
         var paragraphTag = new RegExp("/<p>/i");
         var listTag = new RegExp("/<li>/i");
         var genericTag = new RegExp("/<(.*?)>/i");
 
         message.replace(lineBreakTag, "\n");
+        message.replace(lineBreakSpaceTag, "\n");
         message.replace(paragraphTag, "\n");
         message.replace(listTag, "\n\t");
         message.replace(genericTag, "");
-        
+
         return message;
     }
     
