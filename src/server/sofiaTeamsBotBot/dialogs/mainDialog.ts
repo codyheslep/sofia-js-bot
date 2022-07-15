@@ -37,7 +37,21 @@ export class MainDialog extends ComponentDialog {
         this.initialDialogId = MAIN_WATERFALL_DIALOG_ID;
         this.onboarding = false;
     }
+    
+    private parseRawHTML(message) {
+        var lineBreakTag = new RegExp("/<br/>/i");
+        var paragraphTag = new RegExp("/<p>/i");
+        var listTag = new RegExp("/<li>/i");
+        var genericTag = new RegExp("/<(.*?)>/i");
 
+        message.replace(lineBreakTag, "\n");
+        message.replace(paragraphTag, "\n");
+        message.replace(listTag, "\n\t");
+        message.replace(genericTag, "");
+        
+        return message;
+    }
+    
     public async run(context: TurnContext, accessor: StatePropertyAccessor<DialogState>) {
         const dialogSet = new DialogSet(accessor);
         dialogSet.add(this);
