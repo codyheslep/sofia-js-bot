@@ -38,12 +38,12 @@ export class MainDialog extends ComponentDialog {
         this.onboarding = false;
     }
     
-    private parseRawHTML(message) {
-        var lineBreakTag = new RegExp("/<br/>/i");
-        var lineBreakSpaceTag = new RegExp("/<br />/i");
-        var paragraphTag = new RegExp("/<p>/i");
-        var listTag = new RegExp("/<li>/i");
-        var genericTag = new RegExp("/<(.*?)>/i");
+     private parseRawHTML(message) {
+        const lineBreakTag = new RegExp("/<br/>/i");
+        const lineBreakSpaceTag = new RegExp("/<br />/i");
+        const paragraphTag = new RegExp("/<p>/i");
+        const listTag = new RegExp("/<li>/i");
+        const genericTag = new RegExp("/<(.*?)>/i");
 
         message.replace(lineBreakTag, "\n");
         message.replace(lineBreakSpaceTag, "\n");
