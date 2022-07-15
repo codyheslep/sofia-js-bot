@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.13",
+  "id": "97ac11f0-044e-11ed-a0db-b96792c212b3",
+  "version": "0.0.1",
+  "packageName": "sofiateamsbot",
+  "developer": {
+    "name": "Businessolver",
+    "websiteUrl": "https://javascript-sofia-bot.azurewebsites.net",
+    "privacyUrl": "https://javascript-sofia-bot.azurewebsites.net/privacy.html",
+    "termsOfUseUrl": "https://javascript-sofia-bot.azurewebsites.net/tou.html"
+  },
+  "name": {
+    "short": "SofiaTeamsBot",
+    "full": "SofiaTeamsBot"
+  },
+  "description": {
+    "short": "TODO: add short description here",
+    "full": "TODO: add full description here"
+  },
+  "icons": {
+    "outline": "icon-outline.png",
+    "color": "icon-color.png"
+  },
+  "accentColor": "#D85028",
+  "configurableTabs": [],
+  "staticTabs": [],
+  "bots": [
+    {
+      "botId": "cdb9ede1-d6e2-4fde-9218-9530eaead3ee",
+      "needsChannelSelector": true,
+      "isNotificationOnly": false,
+      "scopes": [
+        "team",
+        "personal",
+        "groupchat"
+      ],
+      "commandLists": [
+        {
+          "scopes": [
+            "team",
+            "personal"
+          ],
+          "commands": [
+            {
+              "title": "Help",
+              "description": "Shows help information"
+            },
+            {
+              "title": "Who am I?",
+              "description": "Shows information about your Teams user"
+            },
+            {
+              "title": "Mention me",
+              "description": "Let the bot @mention you"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "connectors": [],
+  "composeExtensions": [],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "javascript-sofia-bot.azurewebsites.net"
+  ],
+  "showLoadingIndicator": false
+}

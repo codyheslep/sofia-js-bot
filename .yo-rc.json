@@ -1,0 +1,9 @@
+{
+  "generator-teams": {
+    "promptValues": {
+      "developer": "Businessolver"
+    },
+    "libraryName": "sofiaTeamsBot",
+    "generator-version": "4.0.1"
+  }
+}
