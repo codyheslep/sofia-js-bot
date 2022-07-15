@@ -25,13 +25,13 @@ export class SofiaTeamsBotBot extends DialogBot {
 
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded;
-            if (membersAdded && membersAdded.length > 0) {
-                for (let cnt = 0; cnt < membersAdded.length; cnt++) {
-                    if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                        await this.sendWelcomeCard( context );
-                    }
-                }
-            }
+            // if (membersAdded && membersAdded.length > 0) {
+            //     for (let cnt = 0; cnt < membersAdded.length; cnt++) {
+            //         if (membersAdded[cnt].id !== context.activity.recipient.id) {
+            //             await this.sendWelcomeCard( context );
+            //         }
+            //     }
+            // }
             await next();
         });
     }
