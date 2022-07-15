@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable quote-props */
 import {
     ConversationState,
     UserState,
@@ -6,6 +8,8 @@ import {
 } from "botbuilder";
 import { WaterfallStepContext } from "botbuilder-dialogs";
 import { MainDialog } from "./dialogs/mainDialog";
+
+const axios = require("axios");
 
 export class DialogBot extends TeamsActivityHandler {
     public dialogState: any;
@@ -22,8 +26,7 @@ export class DialogBot extends TeamsActivityHandler {
             // await this.dialog.run(context, this.dialogState);
             // await next();
 
-            const url = "http://localhost:8080/benefits/livekinnect/admin/processIntentOptionGenesysCloud";
-            const query = {
+            const postData = {
                 utterance: context.activity.text,
                 mm_num: "310193917",
                 language: "en",
@@ -31,19 +34,25 @@ export class DialogBot extends TeamsActivityHandler {
                 sessionVars: "null"
             };
 
-            console.log("test");
+            const axiosConfig = {
+                headers: {
+                    Authorization: "Basic Z2VuZXN5c2FkbWluLUkzOiFnZW5lc3lzIzI4",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            };
 
             let response = "";
 
-            await fetch(url, {
-                method: "POST",
-                headers: { Authorization: "Basic Z2VuZXN5c2FkbWluLUkzOiFnZW5lc3lzIzI4" },
-                body: JSON.stringify(query)
-            }).then(resp => resp.json()).then(data => {
-                console.log("got a response!");
-                console.log(data);
-                response = data.message;
+            await axios.post("http://localhost:8080/benefits/livekinnect/admin/processIntentOptionGenesysCloud", postData, axiosConfig)
+            .then(res => {
+                console.log(`statusCode: ${res.status}`);
+                response = res.data.message;
+            })
+            .catch(error => {
+                response = "I found an error :(";
+                console.error(error);
             });
+
             await context.sendActivity(response);
             await next();
         });
